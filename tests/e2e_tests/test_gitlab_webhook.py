@@ -19,6 +19,28 @@ logger = get_logger()
 
 def test_e2e_run_github_app():
     # GitLab setup
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     GITLAB_URL = "https://gitlab.com"
     GITLAB_TOKEN = get_settings().gitlab.PERSONAL_ACCESS_TOKEN
     gl = gitlab.Gitlab(GITLAB_URL, private_token=GITLAB_TOKEN)
