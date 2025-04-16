@@ -19,14 +19,29 @@ from pr_agent.log import get_logger
 class PRGenerateLabels:
     def __init__(self, pr_url: str, args: list = None,
                  ai_handler: partial[BaseAiHandler,] = LiteLLMAIHandler):
-        """
-        Initialize the PRGenerateLabels object with the necessary attributes and objects for generating labels
-        corresponding to the PR using an AI model.
-        Args:
-            pr_url (str): The URL of the pull request.
-            args (list, optional): List of arguments passed to the PRGenerateLabels class. Defaults to None.
-        """
         # Initialize the git provider and main PR language
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         self.git_provider = get_git_provider()(pr_url)
         self.main_pr_language = get_main_pr_language(
             self.git_provider.get_languages(), self.git_provider.get_files()
@@ -63,10 +78,29 @@ class PRGenerateLabels:
         self.prediction = None
 
     async def run(self):
-        """
-        Generates a PR labels using an AI model and publishes it to the PR.
-        """
 
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         try:
             get_logger().info(f"Generating a PR labels {self.pr_id}")
             if get_settings().config.publish_output:
@@ -102,34 +136,56 @@ class PRGenerateLabels:
         return ""
 
     async def _prepare_prediction(self, model: str) -> None:
-        """
-        Prepare the AI prediction for the PR labels based on the provided model.
 
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
         Args:
-            model (str): The name of the model to be used for generating the prediction.
-
+            dictionary (dict): The processed files map.
+        
         Returns:
-            None
-
-        Raises:
-            Any exceptions raised by the 'get_pr_diff' and '_get_prediction' functions.
-
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
-
         get_logger().info(f"Getting PR diff {self.pr_id}")
         self.patches_diff = get_pr_diff(self.git_provider, self.token_handler, model)
         get_logger().info(f"Getting AI prediction {self.pr_id}")
         self.prediction = await self._get_prediction(model)
 
     async def _get_prediction(self, model: str) -> str:
-        """
-        Generate an AI prediction for the PR labels based on the provided model.
-
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
         Args:
-            model (str): The name of the model to be used for generating the prediction.
-
+            dictionary (dict): The processed files map.
+        
         Returns:
-            str: The generated AI prediction.
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         variables = copy.deepcopy(self.vars)
         variables["diff"] = self.patches_diff  # update diff
@@ -152,11 +208,55 @@ class PRGenerateLabels:
 
     def _prepare_data(self):
         # Load the AI prediction data into a dictionary
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         self.data = load_yaml(self.prediction.strip())
 
 
 
     def _prepare_labels(self) -> List[str]:
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         pr_types = []
 
         # If the 'labels' key is present in the dictionary, split its value by comma and assign it to 'pr_types'

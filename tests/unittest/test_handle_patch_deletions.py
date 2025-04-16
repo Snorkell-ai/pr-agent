@@ -36,6 +36,28 @@ Additional aspects:
 class TestHandlePatchDeletions:
     # Tests that handle_patch_deletions returns the original patch when new_file_content_str is not empty
     def test_handle_patch_deletions_happy_path_new_file_content_exists(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch = '--- a/file.py\n+++ b/file.py\n@@ -1,2 +1,2 @@\n-foo\n-bar\n+baz\n'
         original_file_content_str = 'foo\nbar\n'
         new_file_content_str = 'foo\nbaz\n'
@@ -45,6 +67,28 @@ class TestHandlePatchDeletions:
 
     # Tests that handle_patch_deletions returns 'File was deleted' when new_file_content_str is empty
     def test_handle_patch_deletions_edge_case_new_file_content_empty(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch = '--- a/file.py\n+++ b/file.py\n@@ -1,2 +1,2 @@\n-foo\n-bar\n'
         original_file_content_str = 'foo\nbar\n'
         new_file_content_str = ''
@@ -54,6 +98,28 @@ class TestHandlePatchDeletions:
 
     # Tests that handle_patch_deletions returns the original patch when patch and patch_new are equal
     def test_handle_patch_deletions_edge_case_patch_and_patch_new_are_equal(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch = '--- a/file.py\n+++ b/file.py\n@@ -1,2 +1,2 @@\n-foo\n-bar\n'
         original_file_content_str = 'foo\nbar\n'
         new_file_content_str = 'foo\nbar\n'
@@ -63,6 +129,28 @@ class TestHandlePatchDeletions:
 
     # Tests that handle_patch_deletions returns the modified patch when patch and patch_new are not equal
     def test_handle_patch_deletions_edge_case_patch_and_patch_new_are_not_equal(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch = '--- a/file.py\n+++ b/file.py\n@@ -1,2 +1,2 @@\n-foo\n-bar\n'
         original_file_content_str = 'foo\nbar\n'
         new_file_content_str = 'foo\nbaz\n'

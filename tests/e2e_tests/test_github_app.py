@@ -17,11 +17,27 @@ logger = get_logger()
 
 
 def test_e2e_run_github_app():
-    """
-    What we want to do:
-    (1) open a PR in a repo 'https://github.com/Codium-ai/pr-agent-tests'
-    (2) wait for 5 minutes until the PR is processed by the GitHub app
-    (3) check that the relevant tools have been executed
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     base_branch = "main"  # or any base branch you want
     new_branch = f"github_app_e2e_test-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"

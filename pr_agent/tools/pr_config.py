@@ -10,16 +10,53 @@ class PRConfig:
     The PRConfig class is responsible for listing all configuration options available for the user.
     """
     def __init__(self, pr_url: str, args=None, ai_handler=None):
-        """
-        Initialize the PRConfig object with the necessary attributes and objects to comment on a pull request.
-
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
         Args:
-            pr_url (str): The URL of the pull request to be reviewed.
-            args (list, optional): List of arguments passed to the PRReviewer class. Defaults to None.
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         self.git_provider = get_git_provider()(pr_url)
 
     async def run(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         get_logger().info('Getting configuration settings...')
         get_logger().info('Preparing configs...')
         pr_comment = self._prepare_pr_configs()
@@ -30,6 +67,28 @@ class PRConfig:
         return ""
 
     def _prepare_pr_configs(self) -> str:
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         conf_file = get_settings().find_file("configuration.toml")
         conf_settings = Dynaconf(settings_files=[conf_file])
         configuration_headers = [header.lower() for header in conf_settings.keys()]
