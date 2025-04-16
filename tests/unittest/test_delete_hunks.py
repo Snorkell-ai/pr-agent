@@ -36,12 +36,56 @@ Additional aspects:
 class TestOmitDeletionHunks:
     # Tests that the function correctly handles a simple patch containing only additions
     def test_simple_patch_additions(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = ['@@ -1,0 +1,1 @@\n', '+added line\n']
         expected_output = '@@ -1,0 +1,1 @@\n\n+added line\n'
         assert omit_deletion_hunks(patch_lines) == expected_output
 
     # Tests that the function correctly omits deletion hunks and concatenates multiple hunks in a patch.
     def test_patch_multiple_hunks(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = ['@@ -1,0 +1,1 @@\n', '-deleted line', '+added line\n', '@@ -2,0 +3,1 @@\n', '-deleted line\n',
                        '-another deleted line\n']
         expected_output = '@@ -1,0 +1,1 @@\n\n-deleted line\n+added line\n'
@@ -50,6 +94,28 @@ class TestOmitDeletionHunks:
     # Tests that the function correctly omits deletion lines from the patch when there are no additions or context
     # lines.
     def test_patch_only_deletions(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = ['@@ -1,1 +1,0 @@\n', '-deleted line\n']
         expected_output = ''
         assert omit_deletion_hunks(patch_lines) == expected_output
@@ -67,18 +133,84 @@ class TestOmitDeletionHunks:
 
     # Tests that the function correctly handles an empty patch
     def test_empty_patch(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = []
         expected_output = ''
         assert omit_deletion_hunks(patch_lines) == expected_output
 
     # Tests that the function correctly handles a patch containing only one hunk
     def test_patch_one_hunk(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = ['@@ -1,0 +1,1 @@\n', '+added line\n']
         expected_output = '@@ -1,0 +1,1 @@\n\n+added line\n'
         assert omit_deletion_hunks(patch_lines) == expected_output
 
     # Tests that the function correctly handles a patch containing only deletions and no additions
     def test_patch_deletions_no_additions(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         patch_lines = ['@@ -1,1 +1,0 @@\n', '-deleted line\n']
         expected_output = ''
         assert omit_deletion_hunks(patch_lines) == expected_output

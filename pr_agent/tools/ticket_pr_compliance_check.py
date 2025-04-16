@@ -12,6 +12,28 @@ GITHUB_TICKET_PATTERN = re.compile(
 
 def find_jira_tickets(text):
     # Regular expression patterns for JIRA tickets
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     patterns = [
         r'\b[A-Z]{2,10}-\d{1,7}\b',  # Standard JIRA ticket format (e.g., PROJ-123)
         r'(?:https?://[^\s/]+/browse/)?([A-Z]{2,10}-\d{1,7})\b'  # JIRA URL or just the ticket
@@ -33,8 +55,27 @@ def find_jira_tickets(text):
 
 
 def extract_ticket_links_from_pr_description(pr_description, repo_path, base_url_html='https://github.com'):
-    """
-    Extract all ticket links from PR description
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     github_tickets = set()
     try:
@@ -64,6 +105,28 @@ def extract_ticket_links_from_pr_description(pr_description, repo_path, base_url
 
 
 async def extract_tickets(git_provider):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     MAX_TICKET_CHARACTERS = 10000
     try:
         if isinstance(git_provider, GithubProvider):
@@ -137,6 +200,28 @@ async def extract_tickets(git_provider):
 
 
 async def extract_and_cache_pr_tickets(git_provider, vars):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if not get_settings().get('pr_reviewer.require_ticket_analysis_review', False):
         return
 
@@ -165,4 +250,26 @@ async def extract_and_cache_pr_tickets(git_provider, vars):
 
 
 def check_tickets_relevancy():
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     return True

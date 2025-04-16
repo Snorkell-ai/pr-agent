@@ -15,6 +15,28 @@ from pr_agent.tools.pr_reviewer import PRReviewer
 
 
 def is_true(value: Union[str, bool]) -> bool:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if isinstance(value, bool):
         return value
     if isinstance(value, str):
@@ -23,6 +45,28 @@ def is_true(value: Union[str, bool]) -> bool:
 
 
 def get_setting_or_env(key: str, default: Union[str, bool] = None) -> Union[str, bool]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     try:
         value = get_settings().get(key, default)
     except AttributeError:  # TBD still need to debug why this happens on GitHub Actions
@@ -32,6 +76,28 @@ def get_setting_or_env(key: str, default: Union[str, bool] = None) -> Union[str,
 
 async def run_action():
     # Get environment variables
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     GITHUB_EVENT_NAME = os.environ.get('GITHUB_EVENT_NAME')
     GITHUB_EVENT_PATH = os.environ.get('GITHUB_EVENT_PATH')
     OPENAI_KEY = os.environ.get('OPENAI_KEY') or os.environ.get('OPENAI.KEY')

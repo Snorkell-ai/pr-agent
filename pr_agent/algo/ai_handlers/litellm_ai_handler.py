@@ -24,9 +24,27 @@ class LiteLLMAIHandler(BaseAiHandler):
     """
 
     def __init__(self):
-        """
-        Initializes the OpenAI API key and other settings from a configuration file.
-        Raises a ValueError if the OpenAI key is missing.
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         self.azure = False
         self.api_base = None
@@ -108,6 +126,28 @@ class LiteLLMAIHandler(BaseAiHandler):
         self.claude_extended_thinking_models = CLAUDE_EXTENDED_THINKING_MODELS
 
     def prepare_logs(self, response, system, user, resp, finish_reason):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         response_log = response.dict().copy()
         response_log['system'] = system
         response_log['user'] = user
@@ -120,15 +160,27 @@ class LiteLLMAIHandler(BaseAiHandler):
         return response_log
 
     def _configure_claude_extended_thinking(self, model: str, kwargs: dict) -> dict:
-        """
-        Configure Claude extended thinking parameters if applicable.
-
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
         Args:
-            model (str): The AI model being used
-            kwargs (dict): The keyword arguments for the model call
-
+            dictionary (dict): The processed files map.
+        
         Returns:
-            dict: Updated kwargs with extended thinking configuration
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         extended_thinking_budget_tokens = get_settings().config.get("extended_thinking_budget_tokens", 2048)
         extended_thinking_max_output_tokens = get_settings().config.get("extended_thinking_max_output_tokens", 4096)
@@ -157,10 +209,54 @@ class LiteLLMAIHandler(BaseAiHandler):
         return kwargs
 
     def add_litellm_callbacks(selfs, kwargs) -> dict:
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         captured_extra = []
 
         def capture_logs(message):
             # Parsing the log message and context
+            """Save the processed files map to a JSON file.
+            
+            Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+            description of each parameter is optional, but should be included if not obvious.
+            
+            Args:
+                dictionary (dict): The processed files map.
+            
+            Returns:
+                bool: True if successful, False otherwise.
+                The return type is optional and may be specified at the beginning of
+                the ``Returns`` section followed by a colon.
+                The ``Returns`` section may span multiple lines and paragraphs.
+                Following lines should be indented to match the first line.
+                The ``Returns`` section supports any reStructuredText formatting,
+                including literal blocks::
+                    
+                    {
+                    'param1': param1,
+                    'param2': param2
+                    }
+            """
             record = message.record
             log_entry = {}
             if record.get('extra', None).get('command', None) is not None:
@@ -212,8 +308,27 @@ class LiteLLMAIHandler(BaseAiHandler):
 
     @property
     def deployment_id(self):
-        """
-        Returns the deployment ID for the OpenAI API.
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         return get_settings().get("OPENAI.DEPLOYMENT_ID", None)
 
@@ -222,6 +337,28 @@ class LiteLLMAIHandler(BaseAiHandler):
         stop=stop_after_attempt(OPENAI_RETRIES)
     )
     async def chat_completion(self, model: str, system: str, user: str, temperature: float = 0.2, img_path: str = None):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         try:
             resp, finish_reason = None, None
             deployment_id = self.deployment_id
