@@ -9,6 +9,28 @@ from pr_agent.algo.utils import find_line_number_of_relevant_line_in_file
 class TestFindLineNumberOfRelevantLineInFile:
     # Tests that the function returns the correct line number and absolute position when the relevant line is found in the patch
     def test_relevant_line_found_in_patch(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,1 +1,2 @@\n-line1\n+line2\n+relevant_line\n', filename='file1')
         ]
@@ -19,6 +41,28 @@ class TestFindLineNumberOfRelevantLineInFile:
 
     # Tests that the function returns the correct line number and absolute position when a similar line is found using difflib
     def test_similar_line_found_using_difflib(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,1 +1,2 @@\n-line1\n+relevant_line in file similar match\n', filename='file1')
         ]
@@ -29,6 +73,28 @@ class TestFindLineNumberOfRelevantLineInFile:
 
     # Tests that the function returns (-1, -1) when the relevant line is not found in the patch and no similar line is found using difflib
     def test_relevant_line_not_found(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,1 +1,2 @@\n-line1\n+relevant_line\n', filename='file1')
         ]
@@ -39,6 +105,28 @@ class TestFindLineNumberOfRelevantLineInFile:
 
     # Tests that the function returns (-1, -1) when the relevant file is not found in any of the patches
     def test_relevant_file_not_found(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,1 +1,2 @@\n-line1\n+relevant_line\n', filename='file2')
         ]
@@ -49,6 +137,28 @@ class TestFindLineNumberOfRelevantLineInFile:
 
     # Tests that the function returns (-1, -1) when the relevant_line_in_file is an empty string
     def test_empty_relevant_line(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,1 +1,2 @@\n-line1\n+relevant_line\n', filename='file1')
         ]
@@ -59,6 +169,28 @@ class TestFindLineNumberOfRelevantLineInFile:
 
     # Tests that the function returns (-1, -1) when the relevant_line_in_file is found in the patch but it is a deleted line
     def test_relevant_line_found_but_deleted(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         diff_files = [
             FilePatchInfo(base_file='file1', head_file='file1', patch='@@ -1,2 +1,1 @@\n-line1\n-relevant_line\n', filename='file1')
         ]

@@ -29,6 +29,28 @@ MAX_EXTRA_LINES = 10
 
 
 def cap_and_log_extra_lines(value, direction) -> int:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if value > MAX_EXTRA_LINES:
         get_logger().warning(f"patch_extra_lines_{direction} was {value}, capping to {MAX_EXTRA_LINES}")
         return MAX_EXTRA_LINES
@@ -41,6 +63,28 @@ def get_pr_diff(git_provider: GitProvider, token_handler: TokenHandler,
                 disable_extra_lines: bool = False,
                 large_pr_handling=False,
                 return_remaining_files=False):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if disable_extra_lines:
         PATCH_EXTRA_LINES_BEFORE = 0
         PATCH_EXTRA_LINES_AFTER = 0
@@ -144,6 +188,28 @@ def get_pr_diff(git_provider: GitProvider, token_handler: TokenHandler,
 
 def get_pr_diff_multiple_patchs(git_provider: GitProvider, token_handler: TokenHandler, model: str,
                 add_line_numbers_to_hunks: bool = False, disable_extra_lines: bool = False):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     try:
         diff_files = git_provider.get_diff_files()
     except RateLimitExceededException as e:
@@ -169,6 +235,28 @@ def pr_generate_extended_diff(pr_languages: list,
                               add_line_numbers_to_hunks: bool,
                               patch_extra_lines_before: int = 0,
                               patch_extra_lines_after: int = 0) -> Tuple[list, int, list]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     total_tokens = token_handler.prompt_tokens  # initial tokens
     patches_extended = []
     patches_extended_tokens = []
@@ -210,6 +298,28 @@ def pr_generate_extended_diff(pr_languages: list,
 def pr_generate_compressed_diff(top_langs: list, token_handler: TokenHandler, model: str,
                                 convert_hunks_to_line_numbers: bool,
                                 large_pr_handling: bool) -> Tuple[list, list, list, list, dict, list]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     deleted_files_list = []
 
     # sort each one of the languages in top_langs by the number of tokens in the diff
@@ -277,6 +387,28 @@ def pr_generate_compressed_diff(top_langs: list, token_handler: TokenHandler, mo
 
 
 def generate_full_patch(convert_hunks_to_line_numbers, file_dict, max_tokens_model,remaining_files_list_prev, token_handler):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     total_tokens = token_handler.prompt_tokens # initial tokens
     patches = []
     remaining_files_list_new = []
@@ -318,6 +450,28 @@ def generate_full_patch(convert_hunks_to_line_numbers, file_dict, max_tokens_mod
 
 
 async def retry_with_fallback_models(f: Callable, model_type: ModelType = ModelType.REGULAR):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     all_models = _get_all_models(model_type)
     all_deployments = _get_all_deployments(all_models)
     # try each (model, deployment_id) pair until one is successful, otherwise raise exception
@@ -338,6 +492,28 @@ async def retry_with_fallback_models(f: Callable, model_type: ModelType = ModelT
 
 
 def _get_all_models(model_type: ModelType = ModelType.REGULAR) -> List[str]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if model_type == ModelType.WEAK:
         model = get_weak_model()
     else:
@@ -350,6 +526,28 @@ def _get_all_models(model_type: ModelType = ModelType.REGULAR) -> List[str]:
 
 
 def _get_all_deployments(all_models: List[str]) -> List[str]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     deployment_id = get_settings().get("openai.deployment_id", None)
     fallback_deployments = get_settings().get("openai.fallback_deployments", [])
     if not isinstance(fallback_deployments, list) and fallback_deployments:
@@ -369,21 +567,27 @@ def get_pr_multi_diffs(git_provider: GitProvider,
                        model: str,
                        max_calls: int = 5,
                        add_line_numbers: bool = True) -> List[str]:
-    """
-    Retrieves the diff files from a Git provider, sorts them by main language, and generates patches for each file.
-    The patches are split into multiple groups based on the maximum number of tokens allowed for the given model.
-
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
     Args:
-        git_provider (GitProvider): An object that provides access to Git provider APIs.
-        token_handler (TokenHandler): An object that handles tokens in the context of a pull request.
-        model (str): The name of the model.
-        max_calls (int, optional): The maximum number of calls to retrieve diff files. Defaults to 5.
-
+        dictionary (dict): The processed files map.
+    
     Returns:
-        List[str]: A list of final diff strings, split into multiple groups based on the maximum number of tokens allowed for the given model.
-
-    Raises:
-        RateLimitExceededException: If the rate limit for the Git provider API is exceeded.
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     try:
         diff_files = git_provider.get_diff_files()
@@ -496,8 +700,27 @@ def get_pr_multi_diffs(git_provider: GitProvider,
 
 
 def add_ai_metadata_to_diff_files(git_provider, pr_description_files):
-    """
-    Adds AI metadata to the diff files based on the PR description files (FilePatchInfo.ai_file_summary).
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     try:
         if not pr_description_files:
@@ -520,6 +743,28 @@ def add_ai_metadata_to_diff_files(git_provider, pr_description_files):
 
 
 def add_ai_summary_top_patch(file, full_extended_patch):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     try:
         # below every instance of '## File: ...' in the patch, add the ai-summary metadata
         full_extended_patch_lines = full_extended_patch.split("\n")

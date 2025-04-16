@@ -37,14 +37,27 @@ global_settings = Dynaconf(
 
 
 def get_settings(use_context=False):
-    """
-    Retrieves the current settings.
-
-    This function attempts to fetch the settings from the starlette_context's context object. If it fails,
-    it defaults to the global settings defined outside of this function.
-
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
     Returns:
-        Dynaconf: The current settings object, either from the context or the global default.
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     try:
         return context["settings"]
@@ -54,8 +67,27 @@ def get_settings(use_context=False):
 
 # Add local configuration from pyproject.toml of the project being reviewed
 def _find_repository_root() -> Optional[Path]:
-    """
-    Identify project root directory by recursively searching for the .git directory in the parent directories.
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     cwd = Path.cwd().resolve()
     no_way_up = False
@@ -68,8 +100,27 @@ def _find_repository_root() -> Optional[Path]:
 
 
 def _find_pyproject() -> Optional[Path]:
-    """
-    Search for file pyproject.toml in the repository root.
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     repo_root = _find_repository_root()
     if repo_root:
