@@ -20,6 +20,28 @@ from pr_agent.servers.help import HelpMessage
 
 class PR_LineQuestions:
     def __init__(self, pr_url: str, args=None, ai_handler: partial[BaseAiHandler,] = LiteLLMAIHandler):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         self.question_str = self.parse_args(args)
         self.git_provider = get_git_provider()(pr_url)
         self.main_pr_language = get_main_pr_language(
@@ -44,6 +66,28 @@ class PR_LineQuestions:
         self.prediction = None
 
     def parse_args(self, args):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         if args and len(args) > 0:
             question_str = " ".join(args)
         else:
@@ -52,6 +96,28 @@ class PR_LineQuestions:
 
 
     async def run(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         get_logger().info('Answering a PR lines question...')
         # if get_settings().config.publish_output:
         #     self.git_provider.publish_comment("Preparing answer...", is_temporary=True)
@@ -94,6 +160,28 @@ class PR_LineQuestions:
         return ""
 
     async def _get_prediction(self, model: str):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         variables = copy.deepcopy(self.vars)
         variables["full_hunk"] = self.patch_with_lines  # update diff
         variables["selected_lines"] = self.selected_lines

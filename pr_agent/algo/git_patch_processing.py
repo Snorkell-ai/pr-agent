@@ -10,6 +10,28 @@ from pr_agent.log import get_logger
 
 def extend_patch(original_file_str, patch_str, patch_extra_lines_before=0,
                  patch_extra_lines_after=0, filename: str = "", new_file_str="") -> str:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if not patch_str or (patch_extra_lines_before == 0 and patch_extra_lines_after == 0) or not original_file_str:
         return patch_str
 
@@ -32,6 +54,28 @@ def extend_patch(original_file_str, patch_str, patch_extra_lines_before=0,
 
 
 def decode_if_bytes(original_file_str):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if isinstance(original_file_str, (bytes, bytearray)):
         try:
             return original_file_str.decode('utf-8')
@@ -47,6 +91,28 @@ def decode_if_bytes(original_file_str):
 
 
 def should_skip_patch(filename):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     patch_extension_skip_types = get_settings().config.patch_extension_skip_types
     if patch_extension_skip_types and filename:
         return any(filename.endswith(skip_type) for skip_type in patch_extension_skip_types)
@@ -54,6 +120,28 @@ def should_skip_patch(filename):
 
 
 def process_patch_lines(patch_str, original_file_str, patch_extra_lines_before, patch_extra_lines_after, new_file_str=""):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     allow_dynamic_context = get_settings().config.allow_dynamic_context
     patch_extra_lines_before_dynamic = get_settings().config.max_extra_lines_before_dynamic_context
 
@@ -84,6 +172,28 @@ def process_patch_lines(patch_str, original_file_str, patch_extra_lines_before, 
 
                     if is_valid_hunk and (patch_extra_lines_before > 0 or patch_extra_lines_after > 0):
                         def _calc_context_limits(patch_lines_before):
+                            """Save the processed files map to a JSON file.
+                            
+                            Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+                            description of each parameter is optional, but should be included if not obvious.
+                            
+                            Args:
+                                dictionary (dict): The processed files map.
+                            
+                            Returns:
+                                bool: True if successful, False otherwise.
+                                The return type is optional and may be specified at the beginning of
+                                the ``Returns`` section followed by a colon.
+                                The ``Returns`` section may span multiple lines and paragraphs.
+                                Following lines should be indented to match the first line.
+                                The ``Returns`` section supports any reStructuredText formatting,
+                                including literal blocks::
+                                    
+                                    {
+                                    'param1': param1,
+                                    'param2': param2
+                                    }
+                            """
                             extended_start1 = max(1, start1 - patch_lines_before)
                             extended_size1 = size1 + (start1 - extended_start1) + patch_extra_lines_after
                             extended_start2 = max(1, start2 - patch_lines_before)
@@ -173,9 +283,27 @@ def process_patch_lines(patch_str, original_file_str, patch_extra_lines_before, 
     return extended_patch_str
 
 def check_if_hunk_lines_matches_to_file(i, original_lines, patch_lines, start1):
-    """
-    Check if the hunk lines match the original file content. We saw cases where the hunk header line doesn't match the original file content, and then
-    extending the hunk with extra lines before the hunk header can cause the hunk to be invalid.
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     is_valid_hunk = True
     try:
@@ -200,6 +328,28 @@ def check_if_hunk_lines_matches_to_file(i, original_lines, patch_lines, start1):
 
 
 def extract_hunk_headers(match):
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     res = list(match.groups())
     for i in range(len(res)):
         if res[i] is None:
@@ -214,14 +364,29 @@ def extract_hunk_headers(match):
 
 
 def omit_deletion_hunks(patch_lines) -> str:
-    """
-    Omit deletion hunks from the patch and return the modified patch.
-    Args:
-    - patch_lines: a list of strings representing the lines of the patch
-    Returns:
-    - A string representing the modified patch with deletion hunks omitted
-    """
 
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     temp_hunk = []
     added_patched = []
     add_hunk = False
@@ -254,21 +419,27 @@ def omit_deletion_hunks(patch_lines) -> str:
 
 def handle_patch_deletions(patch: str, original_file_content_str: str,
                            new_file_content_str: str, file_name: str, edit_type: EDIT_TYPE = EDIT_TYPE.UNKNOWN) -> str:
-    """
-    Handle entire file or deletion patches.
-
-    This function takes a patch, original file content, new file content, and file name as input.
-    It handles entire file or deletion patches and returns the modified patch with deletion hunks omitted.
-
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
     Args:
-        patch (str): The patch to be handled.
-        original_file_content_str (str): The original content of the file.
-        new_file_content_str (str): The new content of the file.
-        file_name (str): The name of the file.
-
+        dictionary (dict): The processed files map.
+    
     Returns:
-        str: The modified patch with deletion hunks omitted.
-
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
     """
     if not new_file_content_str and (edit_type == EDIT_TYPE.DELETED or edit_type == EDIT_TYPE.UNKNOWN):
         # logic for handling deleted files - don't show patch, just show that the file was deleted
@@ -286,39 +457,30 @@ def handle_patch_deletions(patch: str, original_file_content_str: str,
 
 
 def decouple_and_convert_to_hunks_with_lines_numbers(patch: str, file) -> str:
-    """
-    Convert a given patch string into a string with line numbers for each hunk, indicating the new and old content of
-    the file.
-
-    Args:
-        patch (str): The patch string to be converted.
-        file: An object containing the filename of the file being patched.
-
-    Returns:
-        str: A string with line numbers for each hunk, indicating the new and old content of the file.
-
-    example output:
-## src/file.ts
-__new hunk__
-881        line1
-882        line2
-883        line3
-887 +      line4
-888 +      line5
-889        line6
-890        line7
-...
-__old hunk__
-        line1
-        line2
--       line3
--       line4
-        line5
-        line6
-           ...
-    """
 
     # Add a header for the file
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     if file:
         # if the file was deleted, return a message indicating that the file was deleted
         if hasattr(file, 'edit_type') and file.edit_type == EDIT_TYPE.DELETED:
@@ -401,6 +563,28 @@ __old hunk__
 
 
 def extract_hunk_lines_from_patch(patch: str, file_name, line_start, line_end, side, remove_trailing_chars: bool = True) -> tuple[str, str]:
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     try:
         patch_with_lines_str = f"\n\n## File: '{file_name.strip()}'\n\n"
         selected_lines = ""

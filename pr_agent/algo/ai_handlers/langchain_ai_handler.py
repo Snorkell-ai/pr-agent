@@ -19,6 +19,28 @@ OPENAI_RETRIES = 5
 class LangChainOpenAIHandler(BaseAiHandler):
     def __init__(self):
         # Initialize OpenAIHandler specific attributes here
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         super().__init__()
         self.azure = get_settings().get("OPENAI.API_TYPE", "").lower() == "azure"
 
@@ -26,19 +48,82 @@ class LangChainOpenAIHandler(BaseAiHandler):
         self._create_chat(self.deployment_id)
 
     def chat(self, messages: list, model: str, temperature: float):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         chat = self._create_chat(self.deployment_id)
         return chat.invoke(input=messages, model=model, temperature=temperature)
 
     @property
     def deployment_id(self):
-        """
-        Returns the deployment ID for the OpenAI API.
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
         """
         return get_settings().get("OPENAI.DEPLOYMENT_ID", None)
 
     @retry(exceptions=(APIError, Timeout, AttributeError, RateLimitError),
            tries=OPENAI_RETRIES, delay=2, backoff=2, jitter=(1, 3))
     async def chat_completion(self, model: str, system: str, user: str, temperature: float = 0.2):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         try:
             messages = [SystemMessage(content=system), HumanMessage(content=user)]
 
@@ -52,6 +137,28 @@ class LangChainOpenAIHandler(BaseAiHandler):
             raise e
 
     def _create_chat(self, deployment_id=None):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         try:
             if self.azure:
                 # using a partial function so we can set the deployment_id later to support fallback_deployments

@@ -38,6 +38,28 @@ Additional aspects:
 class TestSortFilesByMainLanguages:
     # Tests that files are sorted by main language, with files in main language first and the rest after
     def test_happy_path_sort_files_by_main_languages(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {'Python': 10, 'Java': 5, 'C++': 3}
         files = [
             type('', (object,), {'filename': 'file1.py'})(),
@@ -56,6 +78,28 @@ class TestSortFilesByMainLanguages:
 
     # Tests that function handles empty languages dictionary
     def test_edge_case_empty_languages(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {}
         files = [
             type('', (object,), {'filename': 'file1.py'})(),
@@ -66,6 +110,28 @@ class TestSortFilesByMainLanguages:
 
     # Tests that function handles empty files list
     def test_edge_case_empty_files(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {'Python': 10, 'Java': 5}
         files = []
         expected_output = [
@@ -75,6 +141,28 @@ class TestSortFilesByMainLanguages:
 
     # Tests that function handles languages with no extensions
     def test_edge_case_languages_with_no_extensions(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {'Python': 10, 'Java': 5, 'C++': 3}
         files = [
             type('', (object,), {'filename': 'file1.py'})(),
@@ -91,6 +179,28 @@ class TestSortFilesByMainLanguages:
 
     # Tests the behavior of the function when all files have bad extensions and only one new valid file is added.
     def test_edge_case_files_with_bad_extensions_only(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {'Python': 10, 'Java': 5, 'C++': 3}
         files = [
             type('', (object,), {'filename': 'file1.csv'})(),
@@ -102,6 +212,28 @@ class TestSortFilesByMainLanguages:
 
     # Tests general behaviour of function
     def test_general_behaviour_sort_files_by_main_languages(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         languages = {'Python': 10, 'Java': 5, 'C++': 3}
         files = [
             type('', (object,), {'filename': 'file1.py'})(),

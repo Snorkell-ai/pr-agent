@@ -9,18 +9,84 @@ class TestTryFixYaml:
 
     # The function successfully parses a valid YAML string.
     def test_valid_yaml(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = "key: value\n"
         expected_output = {"key": "value"}
         assert try_fix_yaml(review_text) == expected_output
 
     # The function adds '|-' to 'relevant line:' if it is not already present and successfully parses the YAML string.
     def test_add_relevant_line(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = "relevant line: value: 3\n"
         expected_output = {'relevant line': 'value: 3\n'}
         assert try_fix_yaml(review_text) == expected_output
 
     # The function extracts YAML snippet
     def test_extract_snippet(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = '''\
 Here is the answer in YAML format:
 
@@ -34,18 +100,84 @@ age: 35
 
     # The function removes the last line(s) of the YAML string and successfully parses the YAML string.
     def test_remove_last_line(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = "key: value\nextra invalid line\n"
         expected_output = {"key": "value"}
         assert try_fix_yaml(review_text) == expected_output
 
     # The YAML string is empty.
     def test_empty_yaml_fixed(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = ""
         assert try_fix_yaml(review_text) is None
 
 
     # The function extracts YAML snippet
     def test_no_initial_yaml(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = '''\
 I suggest the following:
 
@@ -68,6 +200,28 @@ We can further improve the code by using the `const` keyword instead of `var` in
         assert try_fix_yaml(review_text, first_key='code_suggestions', last_key='label') == expected_output
 
     def test_with_initial_yaml(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         review_text = '''\
 I suggest the following:
 

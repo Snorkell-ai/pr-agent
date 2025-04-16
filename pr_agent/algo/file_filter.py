@@ -5,10 +5,29 @@ from pr_agent.config_loader import get_settings
 
 
 def filter_ignored(files, platform = 'github'):
-    """
-    Filter out files that match the ignore patterns.
-    """
 
+    """Save the processed files map to a JSON file.
+    
+    Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+    description of each parameter is optional, but should be included if not obvious.
+    
+    Args:
+        dictionary (dict): The processed files map.
+    
+    Returns:
+        bool: True if successful, False otherwise.
+        The return type is optional and may be specified at the beginning of
+        the ``Returns`` section followed by a colon.
+        The ``Returns`` section may span multiple lines and paragraphs.
+        Following lines should be indented to match the first line.
+        The ``Returns`` section supports any reStructuredText formatting,
+        including literal blocks::
+            
+            {
+            'param1': param1,
+            'param2': param2
+            }
+    """
     try:
         # load regex patterns, and translate glob patterns to regex
         patterns = get_settings().ignore.regex

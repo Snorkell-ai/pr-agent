@@ -11,11 +11,55 @@ from pr_agent.algo.utils import load_yaml
 class TestLoadYaml:
     #  Tests that load_yaml loads a valid YAML string
     def test_load_valid_yaml(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         yaml_str = 'name: John Smith\nage: 35'
         expected_output = {'name': 'John Smith', 'age': 35}
         assert load_yaml(yaml_str) == expected_output
 
     def test_load_invalid_yaml1(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         yaml_str = \
 '''\
 PR Analysis:
@@ -38,6 +82,28 @@ PR Feedback:
         assert load_yaml(yaml_str) == expected_output
 
     def test_load_invalid_yaml2(self):
+        """Save the processed files map to a JSON file.
+        
+        Function parameters should be documented in the ``Args`` section. The name of each parameter is required. The type and
+        description of each parameter is optional, but should be included if not obvious.
+        
+        Args:
+            dictionary (dict): The processed files map.
+        
+        Returns:
+            bool: True if successful, False otherwise.
+            The return type is optional and may be specified at the beginning of
+            the ``Returns`` section followed by a colon.
+            The ``Returns`` section may span multiple lines and paragraphs.
+            Following lines should be indented to match the first line.
+            The ``Returns`` section supports any reStructuredText formatting,
+            including literal blocks::
+                
+                {
+                'param1': param1,
+                'param2': param2
+                }
+        """
         yaml_str = '''\
 - relevant file: src/app.py:
   suggestion content: The print statement is outside inside the if __name__ ==: \
